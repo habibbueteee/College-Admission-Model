@@ -41,8 +41,7 @@ lower_gpa <- Q_gpa[1]-1.5*iqr_gpa # lower limit is 2.32
 data_2 <- subset(data_1, data_1$gpa > lower_gpa & data_1$gpa < uper_gpa)
 boxplot(data_2$gpa) # No outliers
 
-
-
+sdfsdf
 
 
 
