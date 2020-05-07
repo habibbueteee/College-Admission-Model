@@ -1,5 +1,6 @@
 install.packages("readxl")
 library(readxl)
+<<<<<<< HEAD
 data <- read.csv("College_admission.csv")
 View(data)
 head(data)
@@ -54,3 +55,5 @@ sdfsdf
 
 
 
+=======
+>>>>>>> f425a11a61984b0a51b089d5ff4a2453de2385ec
