@@ -51,8 +51,94 @@ hist(data_2$gre) # Visual inspection
 summary(data_2$gpa) #Not normally distributed : median (3.4) > mean (3.398), so left skewness
 hist(data_2$gpa) # Visual inspection
 
-library(caret)
 
+#Train-test split
+
+splitIndex <- createDataPartition(data_2$admit, p = .70,list = FALSE, times = 1)
+training <- data_2[ splitIndex,]
+test <- data_2[-splitIndex,]
+
+
+
+#Linear Regression model
+LR_model = glm(admit ~ ., data = training,
+               family = "binomial")
+summary(LR_model)
+
+#gpa, gre and rank are significant- so dropped others
+LR_model = glm(admit ~ gpa + rank + gre, data = training,
+               family = "binomial")
+summary(LR_model)
+
+#Predict on Test throgh MOdel
+pred = predict(LR_model,test, type="response")
+pred = ifelse(pred>0.5,1,0)
+pred = factor(pred)
+
+####Validate the model - Confusion Matrix##
+
+act <- test$admit
+# Accuracy
+library(caret)
+table(pred, act)
+a=confusionMatrix(pred,act)
+a # Accuracy is 68.38% for logistic regression
+
+
+
+#Support Vector machine
+install.packages("e1071")
+library(e1071)
+
+svmfit =svm(admit ~ gpa+rank+gre, data = training, kernel="linear",
+            scale = T)
+print(svmfit)
+pred_svm = predict(svmfit,test, type="response")
+table(pred_svm, act)
+a=confusionMatrix(pred_svm,act)
+a # Accuracy is 69.23% for SVM
+
+#Decision Tree
+
+library(party)    # FOr decision tree 
+library(rpart)    # for Rpart 
+library(rpart.plot) #for Rpart plot
+library(lattice)  # Used for Data Visualization
+
+fit_dt = rpart(admit ~ gpa+rank+gre, data = training,method = "class", 
+            control = rpart.control(minsplit = 30,cp = 0.01))
+
+summary(fit_dt)
+pred_dt = predict(fit_dt,test, type="class")
+table(pred_dt, act)
+a=confusionMatrix(pred_dt,act)
+a # Accuracy is 68.38% for Decision Tree
+
+
+#Random Forest
+install.packages("randomForest")
+library(randomForest)
+require(caret) 
+library(pROC)
+library(e1071)
+
+fit_rf = randomForest(admit ~ gpa+rank+gre, data = training, do.trace=T)
+pred_rf = predict(fit_rf,test)
+table(pred_rf, act)
+a=confusionMatrix(pred_rf,act)
+a # Accuracy is 70.09% for Random FOrest
+
+
+#Naivee Bayes
+
+install.packages("naivebayes")
+library(naivebayes)
+
+fit_nb = naive_bayes(admit ~ gpa+rank+gre, data = training)
+pred_nv = predict(fit_rf,test)
+table(pred_nv, act)
+a=confusionMatrix(pred_nv,act)
+a # Accuracy is 70.09% for Naivee Bayes
 
 
 
