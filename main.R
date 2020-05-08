@@ -1,6 +1,6 @@
 install.packages("readxl")
 library(readxl)
-<<<<<<< HEAD
+
 data <- read.csv("College_admission.csv")
 View(data)
 head(data)
@@ -9,6 +9,7 @@ str(data)
 
 
 #Checking missing values. Found none
+anyNA(data)
 sum(is.na(data))
 
 #Factoring the categorical data
@@ -42,18 +43,16 @@ lower_gpa <- Q_gpa[1]-1.5*iqr_gpa # lower limit is 2.32
 data_2 <- subset(data_1, data_1$gpa > lower_gpa & data_1$gpa < uper_gpa)
 boxplot(data_2$gpa) # No outliers
 
-sdfsdf
+# Checking if normally distributed
+
+summary(data_2$gre) #Not normally distributed : mean (591.2) > median (580.0), so right skewness
+hist(data_2$gre) # Visual inspection
+
+summary(data_2$gpa) #Not normally distributed : median (3.4) > mean (3.398), so left skewness
+hist(data_2$gpa) # Visual inspection
+
+library(caret)
 
 
 
 
-
-
-
-
-
-
-
-
-=======
->>>>>>> f425a11a61984b0a51b089d5ff4a2453de2385ec
