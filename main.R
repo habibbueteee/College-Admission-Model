@@ -187,6 +187,3 @@ text(locator(1), "Low: 2.42 - 3.11
 axis(1, at=xx, labels=c("Low","Medium","Hight"), tick=FALSE, las=1, line=-0.5, cex.axis=1.2, font = 2)
 
 
-#cluster 2: 2.42 - 3.11
-#cluster 3: 3.12 - 3.57
-#cluster 1: 3.58 - 4.00
