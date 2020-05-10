@@ -1,9 +1,11 @@
 # College-Admission-Model
 
-Project Objective: 
+The description of the project is summerized in "College Admission.pdf" file.
+
+#Project Objective: 
 Every year thousands of applications are being submitted by international students for admission in colleges of the USA. It becomes an iterative task for the Education Department to know the total number of applications received and then compare that data with the total number of applications successfully accepted and visas processed. Hence to make the entire process easy, the education department in the US analyze the factors that influence the admission of a student into colleges. The objective of this project is to analyse the same.
 
-Dataset Description:
+#Dataset Description:
 
 GRE:	Graduate Record Exam Scores
 GPA:	Grade Point Average
@@ -13,9 +15,9 @@ SES:	SES refers to socioeconomic status: 1 - low, 2 - medium, 3 - high.
 Gender_male:	Gender_male (0, 1) = 0 -> Female, 1 -> Male
 Race:	Race – 1, 2, and 3 represent Hispanic, Asian, and African-American 
 
-Objective: Analyze the historical data and determine the key drivers for admission.
+#Goal: Analyze the historical data and determine the key drivers for admission.
 
-Predictive Analytics: 
+#Predictive Analytics: 
 
 Finding the missing values. (if any, perform missing value treatment)
 Finding outliers (if any, then perform outlier treatment)
@@ -31,5 +33,5 @@ Selecting the most accurate model
 Identifying other Machine learning or statistical techniques
  
 
-Descriptive: 
+#Descriptive: 
 Categorizing the average of grade point into High, Medium, and Low (with admission probability percentages) and plot it on a point chart.  
